@@ -1,7 +1,9 @@
 import pygame
 import time
 import random
-import square
+import square # type: ignore
+import file_load # type: ignore
+
 
 # veriable intitlize
 space = True
@@ -24,11 +26,14 @@ colorb = 250
 res_X = 1280
 res_Y = 720
 running = True
+
+#loads objs?
+file_load.obj_read("/home/mastercat/Documents/GitHub/3d-generator/Part Studio 1 - Part 1.obj")
+print("~~~~~~~~~~")
+
+
+
 # start shit
-
-
-
-
 screen = pygame.display.set_mode((res_X, res_Y))
 surface = screen
 
@@ -82,7 +87,7 @@ while running:
             randX4 = random.randint(0, res_X) 
             randY3 = random.randint(0, res_Y) 
             randY4 = random.randint(0, res_Y) 
-            dense = random.randint(0, 10000) 
+            dense = 10000
             colorr = random.randint(0, 255) 
             colorg = random.randint(0, 255) 
             colorb = random.randint(0, 255) 
@@ -93,9 +98,9 @@ while running:
             space = False
     else:
         space = True
-    screen.fill((0, 0, 0))
-    square.squre_draw(dense, surface, res_X, res_Y, randX1 + xp, randY1 + yp, randX2 + xp, randY2 + yp, randX3 + xp, randY3 + yp, randX4 + xp, randY4 + yp, (colorr,colorg,colorb))
-    
+    screen.fill((0,0,0))
+    #square.squre_draw(dense, surface, res_X, res_Y, randX1 + xp, randY1 + yp, randX2 + xp, randY2 + yp, randX3 + xp, randY3 + yp, randX4 + xp, randY4 + yp, (colorr,colorg,colorb))
+    square.triangle_draw(dense, surface, res_X, res_Y, randX1 + xp, randY1 + yp, randX2 + xp, randY2 + yp, randX3 + xp, randY3 + yp,(colorr,colorg,colorb))
 
 
     if keys[pygame.K_d]:
@@ -120,6 +125,4 @@ while running:
     #screen.fill((0, 0, 0))
     #screen.blit(block.image, block.rect)
     pygame.display.flip()
-
-    
-
+    running = False
