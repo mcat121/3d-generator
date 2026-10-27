@@ -1,4 +1,6 @@
 def obj_read(file_path):
+    for x in range(10):
+        print("")
     f = open(file_path, "r")
     #print(f.read()) 
     null = "null"
@@ -8,29 +10,44 @@ def obj_read(file_path):
     space_flag1 = False
     #ver int
     x = ""
-    y = 0
-    z = 0
+    y = ""
+    z = ""
+    clock = 0
+    spacer = 0
 
 
     for row in f:
-        for cell in row:
-            if cell == "v":
-                pass_flag = True
-                v_flag = True
-            if pass_flag:
-                pass_flag = False
-                print("pass")
-                pass
-            else:
-                print("continue")
-                if space_flag1 and not cell == " ":
-                    x = (str(x) + str(cell))
-                    print(x)
-                elif space_flag1:
-                    pass
-
-                if v_flag and cell == " ":
-                    space_flag1 = True
+        if (row[0]) == "v" and (row[1]) == " ":
+            #print(row)
+            lang = len(row)
+            xyz = -1
+            for char in range(lang):
+                if xyz == 0:
+                    if (row[char]) == " ":
+                        xyz = 1
+                    else:
+                        x =  x +(row[char])
+                if xyz == 1:
+                    if (row[char]) == " ":
+                        xyz = 2
+                    else:
+                        y = y + (row[char])
+                if xyz == 2:
+                    if (row[char]) == " ":
+                        pass
+                    else:
+                        z = z + (row[char])
+            print(x + "X")
+            print (y + "Y")
+            print(z + "Z")
+                
+                
+           
+        
+        
+    print(x)
+    #print (y)
+    #print(z)
             
 
 
