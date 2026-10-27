@@ -19,20 +19,14 @@ def squre_draw(dense, surface, sscreen_X, screen_Y,
                       (corner_4X, corner_4Y), 
                       (corner_1X, corner_1Y))
 
-    
-    line_X_1 = (corner_1X - corner_2X) 
-    line_Y_1 = (corner_1Y - corner_2Y) 
-    line_X_2 = (corner_3X - corner_4X) 
-    line_Y_2 = (corner_3Y - corner_4Y) 
-    infill = line_X_1*line_X_2*line_Y_1*line_Y_2  
-    dense *= infill
-
     for dis_ in range(dense):
-
 
         dis = dis_/dense
 
-
+        line_X_1 = (corner_1X - corner_2X) * dis
+        line_Y_1 = (corner_1Y - corner_2Y) *dis
+        line_X_2 = (corner_3X - corner_4X) *dis
+        line_Y_2 = (corner_3Y - corner_4Y) *dis
 
         line_X_1=  line_X_1 /1
         line_X_2= line_X_2 /-1
